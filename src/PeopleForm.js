@@ -6,11 +6,11 @@ const PeopleForm = ({ kisiler, submitFn }) => {
 
   useEffect(() => {
     if (kisiler.includes(isim)) {
-      setError("Bu isim daha önce eklenmiş")
+      setError("Bu isim daha önce eklenmiş");
     } else {
-      setError(null)
+      setError(null);
     }
-  }, [isim, kisiler])
+  }, [isim, kisiler]);
 
   function handleIsimChange(e) {
     setIsim(e.target.value);
@@ -24,12 +24,24 @@ const PeopleForm = ({ kisiler, submitFn }) => {
 
   return (
     <form className="taskForm" onSubmit={handleSubmit}>
+
+      <h2 className="form-title">Kişiler</h2>
+       <hr className="form-divider" />
+      <ul>
+        {kisiler.map((kisi) => (
+          <li className="pill" key={kisi}>{kisi}</li>
+        ))}
+      </ul>
+      <hr className="form-divider" />
+
+      {/* İsim alanı */}
       <div className="form-line">
+      <h2 className="form-title">Yeni Kişi Ekle</h2>
         <label className="input-label" htmlFor="title">
-          İsim
         </label>
         <input
           className="input-text"
+          placeholder="İsim girin"
           id="title"
           name="title"
           type="text"
